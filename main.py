@@ -11,7 +11,7 @@ from colorama import *
 class ZoomBomber:
     def __init__(self):
         f = Figlet()
-        print(Fore.BLUE + f.renderText('OttomanBomber'))
+        print(Fore.BLUE + f.renderText('ShameOnYou'))
         print(Fore.YELLOW + Back.BLUE+'[+] Zoom Meeting ID Brute Forcer Module by Muneeb Ahmad (C) MIT 2021')
         print('[+] We are Ottomans, we are a Legion, we do not forgive, we do not forget, Expect US!')
         self.Windows_Button = pyautogui.locateOnScreen('./Windows_Button.png')
