@@ -18,7 +18,6 @@ class ZoomBomber:
         if self.Windows_Button == None:
             self.Windows_Button = pyautogui.locateOnScreen('./Windows_Button_2.png')
         pyautogui.click(self.Windows_Button)
-        sleep(1)
         pyautogui.typewrite('Zoom')
         pyautogui.press('enter')
         print(Fore.RED +'[+] Zoom Opened' + Fore.GREEN + '- Success')

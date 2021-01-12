@@ -33,6 +33,33 @@ Use any version of Python 3.6.x and install the following Modules to go with the
 
 This will start the Program, it is reccomended if you have more *Important Stuff to Do*, the best stradegy is to download a Windows 10 VM and Install Zoom in it and let it running. 
 
+### Wallpaper for Best Results
+
+I added the Windows XP Bliss Wallpaper to use, as the Windows Button changes itself depending upon the background, Like see this Example below
+
+![Windows Button Without Bliss](Windows_Button.png) ==> ![Windows Button Without Bliss](Windows_Button_2.png)
+
+So for the best results use the Bliss Wallpaper Included and yes its nostalgic no need to say Thanks :)
+
+### Demo
+
+Here is a Demo of the Program itself [CLI]
+
+##### Video Demo
+
+I found a working ID Second Try, I mean lolz
+
+[![Watch the video](https://img.youtube.com/vi/rJTbF7gdH7g/maxresdefault.jpg)](https://youtu.be/rJTbF7gdH7g)
+
+### Modes
+`
+self.meetings_dict = {
+            'personal_meeting_old':9,
+            'personal_meeting_new':10,
+            'scheduled_meeting':11
+        }
+`
+
 ## Future Features
 
 - Adding a Server that connects all the VM's and increase the Brute Forcing Speed by stopping the duplicates.
