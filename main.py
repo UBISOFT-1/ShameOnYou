@@ -15,7 +15,10 @@ class ZoomBomber:
         print(Fore.YELLOW + Back.BLUE+'[+] Zoom Meeting ID Brute Forcer Module by Muneeb Ahmad (C) MIT 2021')
         print('[+] We are Ottomans, we are a Legion, we do not forgive, we do not forget, Expect US!')
         self.Windows_Button = pyautogui.locateOnScreen('./Windows_Button.png')
+        if self.Windows_Button == None:
+            self.Windows_Button = pyautogui.locateOnScreen('./Windows_Button_2.png')
         pyautogui.click(self.Windows_Button)
+        sleep(1)
         pyautogui.typewrite('Zoom')
         pyautogui.press('enter')
         print(Fore.RED +'[+] Zoom Opened' + Fore.GREEN + '- Success')
