@@ -37,7 +37,7 @@ This will start the Program, it is reccomended if you have more *Important Stuff
 
 I added the Windows XP Bliss Wallpaper to use, as the Windows Button changes itself depending upon the background, Like see this Example below
 
-![Windows Button Without Bliss](Windows_Button.png) ==> ![Windows Button Without Bliss](Windows_Button_2.png)
+![Windows Button Without Bliss](Windows_Button.PNG) ==> ![Windows Button Without Bliss](Windows_Button_2.PNG)
 
 So for the best results use the Bliss Wallpaper Included and yes its nostalgic no need to say Thanks :)
 
