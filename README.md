@@ -6,7 +6,7 @@ A Python Module designed to find and brute force Zoom Meeting ID's, with differe
 
 ### Limitations of other Tools
 
-I saw many different tools, like ZoomBrute which have now become obsolete and are of no use anymore, so I decided to make something that works like a charm and has a lot of support hopefully. This is not only a Tool but a Python Module to Brute Force the Zoom Meeting ID, so it is easier to incooperate in other things, with litte work for others to do.
+I saw many different tools, like ZoomBrute which have now become obsolete and are of no use anymore, so I decided to make something that works like a charm and has a lot of support hopefully. This is not only a Tool but a Python Module to Brute Force the Zoom Meeting ID and the Password if there is one, so it is easier to incooperate in other things, with litte work for others to do.
 
 ## Usage
 
@@ -29,9 +29,43 @@ Use any version of Python 3.6.x and install the following Modules to go with the
 
 ## Usage
 
-`python3 main.py`
+**Step 1**
 
-This will start the Program, it is reccomended if you have more *Important Stuff to Do*, the best stradegy is to download a Windows 10 VM and Install Zoom in it and let it running. 
+Clone this Github Repository by Typing
+`git clone https://github.com/UBISOFT-1/ShameOnYou.git`
+
+**Step 2**
+
+Extract the rockyou.rar to this Folder (ShameOnYou) with the rest of the scripts so that the Password Dict Should be used :)
+
+**Step 3**
+
+Open CMD and change Directory/Folder to ShameOnYou
+
+`cd ShameOnYou`
+
+**Step 5**
+
+Then, type
+
+`python3 main.py` *or* `python main.py` *or* `py main.py`
+
+Leave it running do not touch anything, change the active window to Zoom if it does not itself.
+
+This will start the Program, it is recommended if you have more *Important Stuff to Do*, the best stradegy is to download a Windows 10 VM and Install Zoom in it and let it running. 
+
+## Update v1.BETA
+
+Major Code Changes, Now Added a Password Brute Forcer, you can add your Custom Dictionary as Well.
+- First Generates the Meeting ID
+- Then if it works then goes on to Brute Force it if it is Password Protected
+- When Password is BruteForced saves it in a File named Works.txt Format *meeting:password*
+- Note in Zoom-Meeting.txt saves the meeting_ids like Format (meeting_id:req_pswd/no_req_psws)
+
+**Success Rate** According to Current Testing 97%
+
+**Captcha Evasion** [Works] Bypasser
+
 
 ### Wallpaper for Best Results
 
@@ -51,6 +85,8 @@ I found a working ID Second Try, I mean lolz
 
 [![Watch the video](https://img.youtube.com/vi/rJTbF7gdH7g/maxresdefault.jpg)](https://youtu.be/rJTbF7gdH7g)
 
+Note This Video Does not show the Ottoman BruteForcer in Action, gonna make a video on that as well,
+
 ### Modes
 `
 self.meetings_dict = {
@@ -61,11 +97,15 @@ self.meetings_dict = {
 `
 
 ## Future Features
-
+- Password BruteForcer [Completed]
 - Adding a Server that connects all the VM's and increase the Brute Forcing Speed by stopping the duplicates.
-- Password Cracker
 - Support for MacOS, Ubuntu and Kali Linux [Hopefully]
-- GUI (Comming Really Soon)
+- GUI (Coming Really Soon)
+
+## Recommendations
+
+
+
 
 ## License
 
