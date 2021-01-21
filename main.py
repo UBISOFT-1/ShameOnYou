@@ -1,13 +1,12 @@
 import os
-import pyautogui
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import random
-import numpy as np
 from time import sleep
-from pyfiglet import Figlet
-from colorama import *
 import requests
+import pyautogui
+import numpy as np
+from pyfiglet import Figlet
+from colorama import Fore
+from colorama import Back
 
 
 class ZoomBomber:
@@ -157,9 +156,6 @@ class ZoomBomber:
             print('Ottoman Brute Forcer Completed Execution')
             print('Allah is the Greatest ....')
     def Zoom_Requests_Gen(self,go_crazy=False):
-        # Took this Code from
-        os.system('cls' if os.name == 'nt' else 'clear')
-
         # Data
         headers = {"User-Agent": ["Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"]}
         # Adding sooo many user-agents thats it too much overkitt even for a ddoser hehe
@@ -204,8 +200,8 @@ if __name__ == '__main__':
     Bomber = ZoomBomber()
     while True:
         Link = Bomber.generate_link(10)
-        Link_Status = Bomber.check_link(Link)
-        if Link_Status == True:
+        link_status = Bomber.check_link(Link)
+        if link_status == True:
             print(f'[?] This Link Works {Link}')
             print('[+] Stopping Code Execution Now')
             Bomber.brute_force_link(Link)
