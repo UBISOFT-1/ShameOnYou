@@ -1,4 +1,6 @@
-# ShameOnYou
+
+![ShameOnYou](./giffy.gif)
+#  ShameOnYou
 A Python Module designed to find and brute force Zoom Meeting ID's, with different modes.
 
 ## Introduction
@@ -22,10 +24,7 @@ This Program is currently in BETA mode so, and is under active development, if y
 
 Use any version of Python 3.6.x and install the following Modules to go with them.
 
-- `pip install pyautogui`
-- `pip install selenium`
-- `pip install random`
-- `pip install numpy`
+- `pip3 install -r requirements.txt`
 
 ## Usage
 
@@ -100,9 +99,49 @@ self.meetings_dict = {
 - Password BruteForcer [Completed]
 - Adding a Server that connects all the VM's and increase the Brute Forcing Speed by stopping the duplicates.
 - Support for MacOS, Ubuntu and Kali Linux [Hopefully]
+- Automatic Troller [Using OBS Studio and other Troll Methods, or Setup a Troll WorkFlow]
 - GUI (Coming Really Soon)
 
-## Recommendations
+## Module USAGE
+
+ShameOnYou Python Zoom Cracking Module
+I am working on further making the module better and add much more features to it.
+
+Captcha Evasion works, because of the use of VM's with Zoom Client Installed on it. I am currently using Rockyou.txt as password Dictionary and it appears to be working. Almost 60 % of the tried brute forced meeting ID's have been successfully opened by using Rockyou.txt and certain anomalies produced in the file, will help further evade a ban on Zoom.
+
+
+
+Here is a Simple Demo of the Module as of now, 
+
+2 New Modes are Here - Meeting ID Selenium BruteForcer and Meeting ID Requests Brute Forcer.  Added enough user-agents, that it is too overkill for a DDoSer as well.
+
+Just to Clarify if you do not want to code, then you can just type `python main.py` and let it do it automatically, but the features are there if you ever need to use them.
+#Code Snippet
+
+````
+
+Bomber = ZoomBomber()
+
+while True:
+
+- The first one finds zoom meeting id's using the Requests Module and auto-checks
+   Link = Bomber.Zoom_Requests_Gen()
+
+- The second one makes the Zoom Link using the Pyautogui Module.
+   Link = Bomber.generate_link()
+
+- This checks the Link if it works,
+   Link_Status = Bomber.check_link(Link)
+   if Link_Status == True:
+
+- And if the Link is Correct and the Fail-Safe's also detect that, then begins the Brute-Forcer and auto-saves the Password.
+       print(f'[?] This Link Works {Link}')
+       print('[+] Stopping Code Execution Now')
+       Bomber.brute_force_link(Link)
+
+````
+
+This is the Progress of only a day's work hopefully we could make this go a lot further. Its easy, to do open-source work like this when we have patreon support :) 
 
 
 
@@ -115,4 +154,4 @@ MIT License (C) 2021 Muneeb Ahmad
 
 Zoom Bombing or joining a Zoom Meeting without Permission is considered a intrusion of privacy and it is strictly prohibited, do not use this for illegal purposes,
 as this project is soley intended for helping the research community and making this to raise awareness and hopefully stopping this from happening. If you use this for
-illegal purposes then it is totally on you my intention was clear and and it is that this is indended for research purposes. :) (Hope you Understand Hehe)
+illegal purposes then it is totally on you my intention was clear and and it is that this is indended for research purposes. :) 

